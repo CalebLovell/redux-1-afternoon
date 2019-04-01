@@ -6,11 +6,13 @@ import store, { UPDATE_NAME, UPDATE_CATEGORY} from './../../store.js'
 class Name extends Component {
   constructor(props) {
     super(props);
+    const reduxState = store.getState();
     this.state = {
-      name: '',
-      category: ''
+      name: reduxState.name,
+      category: reduxState.category,
     };
   }
+  
   handleNameChange(nameVal) {
     this.setState({
       name: nameVal
@@ -22,7 +24,7 @@ class Name extends Component {
       category: catVal
     });
   }
-  
+
   saveChanges() {
     store.dispatch({
       type: UPDATE_NAME,
